@@ -1,4 +1,4 @@
-﻿var Grid = function(filter, sortBy, placeholder, gridTemplate, gridRowTemplate)
+﻿var Grid = function(filter, sortBy, pageSize, placeholder, gridTemplate, gridRowTemplate)
 {
     this.filter = filter;
     this.renderGrid = _.template($(gridTemplate).html());
@@ -6,7 +6,7 @@
     this.sortBy = sortBy;
     this.sortReverse = false;
     this.pageIndex = 0;
-    this.pageSize = 10;
+    this.pageSize = pageSize;
     this.pageLoaded = [];
 
     this.init = function () {
