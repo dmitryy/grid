@@ -1,8 +1,8 @@
-﻿var Grid = function(filter, sortBy, template, rowTemplate, placeholder)
+﻿var Grid = function(filter, sortBy, placeholder, gridTemplate, gridRowTemplate)
 {
     this.filter = filter;
-    this.renderGrid = _.template($(template).html());
-    this.renderGridRow = _.template($(rowTemplate).html());
+    this.renderGrid = _.template($(gridTemplate).html());
+    this.renderGridRow = _.template($(gridRowTemplate).html());
     this.sortBy = sortBy;
     this.sortReverse = false;
     this.pageIndex = 0;
