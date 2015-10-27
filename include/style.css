@@ -1,0 +1,9 @@
+body { font-family: Arial; font-size: 12px; }
+body a { color: blue; }
+body a:hover { text-decoration: none; }
+
+.grid { margin: 10px; width: 98%; border-spacing: 0px; }
+.grid th { cursor: pointer; background-color: #fff; border-bottom: 1px solid gray; }
+.grid tr { background-color: #fff; }
+.grid tr:nth-child(2n+1) { background-color: #eee; }
+.grid td { padding: 20px; }

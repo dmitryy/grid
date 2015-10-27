@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Grid control</title>
+    <link href="include/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
+    <script src="js/jquery.onscreen.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/grid.js"></script>
+</head>
+<body>
+
+    <div id="grid">
+        <script type="text/template" id="grid-template">
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th column="Name">Group Name</th>
+                        <th column="Members">Members</th>
+                        <th column="Folders">Shared Folders</th>
+                        <th column="Quota">Storage Quota</th>
+                        <th column="PolicySet">Policy Set</th>
+                    </tr>
+                </thead>
+                <%= rows %>
+            </table>
+        </script>
+        <script type="text/template" id="grid-row-template">
+            <tr>
+                <td>
+                    <a href="#<%= row.ID %>"><%= row.Name %></a>
+                </td>
+                <td><%= row.Members %></td>
+                <td><%= row.Folders %></td>
+                <td><%= row.Quota %></td>
+                <td><%= row.PolicySet %></td>
+            </tr>
+        </script>
+    </div>
+
+    <script type="text/javascript">
+        $(function () { 
+            filter = new Filter();
+            grid = new Grid(filter, 'Name', '#grid-template', '#grid-row-template', '#grid');
+        });
+    </script>
+
+</body>
+</html>
