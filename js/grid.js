@@ -71,7 +71,6 @@
 }
 
 // TODO:
-// 1. sorting CSS classes
-// 2. row selection (optional) and hover styles
+// 2. row selection (optional)
 // 3. get selected rows as object
 // 4. scroll by dragging scroll bar
