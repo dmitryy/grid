@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Grid control</title>
+    <link href="include/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
+    <script src="js/jquery.onscreen.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/grid.js"></script>
+</head>
+<body>
+
+    <div id="grid1">
+        <script type="text/template" id="grid1-template">
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th column="ID">#</th>
+                        <th column="Name">Group Name</th>
+                        <th column="Members">Members</th>
+                        <th column="Folders">Shared Folders</th>
+                        <th column="Quota">Storage Quota</th>
+                        <th column="PolicySet">Policy Set</th>
+                    </tr>
+                </thead>
+                <%= rows %>
+            </table>
+        </script>
+        <script type="text/template" id="grid1-row-template">
+            <tr>
+                <td><%= row.ID %></td>
+                <td>
+                    <a href="#<%= row.ID %>"><%= row.Name %></a>
+                </td>
+                <td><%= row.Members %></td>
+                <td><%= row.Folders %></td>
+                <td><%= row.Quota %></td>
+                <td><%= row.PolicySet %></td>
+            </tr>
+        </script>
+    </div>
+
+    <div id="grid2">
+        <script type="text/template" id="grid2-template">
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th column="ID">#</th>
+                        <th column="Name">Group Name</th>
+                        <th column="Members">Members</th>
+                        <th column="Folders">Shared Folders</th>
+                        <th column="Quota">Storage Quota</th>
+                        <th column="PolicySet">Policy Set</th>
+                    </tr>
+                </thead>
+                <%= rows %>
+            </table>
+        </script>
+        <script type="text/template" id="grid2-row-template">
+            <tr>
+                <td><%= row.ID %></td>
+                <td>
+                    <a href="#<%= row.ID %>"><%= row.Name %></a>
+                </td>
+                <td><%= row.Members %></td>
+                <td><%= row.Folders %></td>
+                <td><%= row.Quota %></td>
+                <td><%= row.PolicySet %></td>
+            </tr>
+        </script>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            window.filter = new Filter();
+            window.grid1 = new Grid(filter, 'Name', 10, '#grid1', '#grid1-template', '#grid1-row-template');
+            window.grid2 = new Grid(filter, 'Name', 10, '#grid2', '#grid2-template', '#grid2-row-template');
+        });
+    </script>
+
+</body>
+</html>

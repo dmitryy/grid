@@ -9,10 +9,6 @@
     this.pageSize = pageSize;
     this.pageLoaded = [];
 
-    this.init = function () {
-        this.sort();
-    }
-
     this.sort = function () {
         this.pageIndex = -1;
         this.pageLoaded = [];
@@ -29,20 +25,20 @@
 
     this.progressiveLoadCallback = function (data) {
         if (data && data.data && data.data.length) {
-            $(this.getRowsHtml(data)).insertAfter('table.grid tbody:last', placeholder);
+            $(this.getRowsHtml(data)).insertAfter(placeholder + ' table.grid tbody:last');
         }
     }
 
     this.bindEvents = function () {
         var self = this;
         $('table', placeholder).unbind().mousewheel(function () {
-            self.setPage(parseInt($('table tbody:onScreen:last', placeholder).attr('page')));
+            self.setPage(parseInt($(placeholder + ' table tbody:visible:onScreen:last').attr('page')));
         });
         $('table th', placeholder).unbind().click(function () {
             var column = $(this).attr('column');
             self.sortReverse = column == self.sortBy && !self.sortReverse;
             self.sortBy = column;
-            self.sort(self.sortBy, self.sortReverse);
+            self.sort();
         });
     }
 
@@ -69,5 +65,11 @@
         return rows;
     }
 
-    $($.proxy(this, 'init'));
+    this.sort();
 }
+
+// TODO:
+// 1. sorting CSS classes
+// 2. row selection (optional) and hover styles
+// 3. get selected rows as object
+// 4. scroll by dragging scroll bar
