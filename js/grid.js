@@ -19,6 +19,8 @@
         $(placeholder).empty().append(this.renderGrid({
             rows: this.getRowsHtml(data)
         }));
+        $('thead th', placeholder).removeClass('sort').removeClass('desc');
+        $('thead th[column=' + this.sortBy + ']', placeholder).addClass('sort').addClass(this.sortReverse ? 'desc' : '');
         this.setPage(0);
         this.bindEvents();
     }
