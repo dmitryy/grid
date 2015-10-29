@@ -29,14 +29,17 @@
             </table>
         </script>
         <script type="text/template" id="grid-row-template">
-            <tr>
+            <tr key="<%= row.ID %>">
                 <td>
                     <a href="#<%= row.ID %>"><%= row.Name %></a>
                 </td>
                 <td><%= row.Members %></td>
                 <td><%= row.Folders %></td>
                 <td><%= row.Quota %></td>
-                <td><%= row.PolicySet %></td>
+                <td>
+                    <%= row.PolicySet %>
+                    <a href="#" class="delete">X</a>
+                </td>
             </tr>
         </script>
     </div>
@@ -45,6 +48,17 @@
         $(function () {
             window.filter = new Filter();
             window.grid = new Grid(filter, 'Name', 10, '#grid', '#grid-template', '#grid-row-template');
+
+            grid.click(function (id, tr, event) {
+                if ($(event.target).hasClass('delete')) {
+                    grid.hideRowByKey(id);
+                    event.preventDefault();
+                }
+            });
+
+            grid.context(function () {
+                console.debug(arguments)
+            });
         });
     </script>
 

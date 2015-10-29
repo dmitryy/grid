@@ -5,20 +5,28 @@ body a:hover { text-decoration: none; }
 i.arrow { display: inline-block; height: 0; width: 0; border: 4px solid black; border-color: transparent; border-bottom-color: black; }
 .desc i.arrow { border-bottom-color: transparent; border-top-color: black; }
 
-.grid { margin: 10px; width: 98%; border-spacing: 0px; }
-.grid th { cursor: pointer; background-color: #fff; border-bottom: 1px solid gray; }
+.grid { margin: 10px; width: 98%; border-spacing: 0px; border: 1px solid #F1F1F1; }
+.grid th { background-color: #F7F7F7; border-bottom: 3px solid #F7F7F7; padding: 10px; text-align: left; border-right: 2px solid #F1F1F1; }
+.grid th[column] { cursor: pointer; }
 .grid th i.arrow { display: none; }
-.grid th.sort { }
+.grid th[column]:hover { border-bottom: 3px solid #2491e4; }
+.grid th.sort { border-bottom: 3px solid #2491e4; }
 .grid th.sort i.arrow { display: inline-block; position: absolute; margin-top: 2px; margin-left: 2px; }
 .grid th.sort.desc { }
 .grid th.sort.desc i.arrow { display: inline-block; position: absolute; margin-top: 6px; margin-left: 2px; }
-.grid tr { background-color: #fff; }
-.grid tr:nth-child(2n+1) { background-color: #eee; }
-.grid tr:hover td { background-color: #FFFFAA; }
-.grid td { padding: 20px; }
+.grid tr { }
+.grid tr:nth-child(2n+1) { background-color: #fff; }
+.grid tr:hover td { background-color: #EEF8FF; }
+.grid tr.selected td { background-color: #EEF8FF; }
+.grid td { cursor: pointer; padding: 20px; border-top: 1px solid #F1F1F1; border-right: 2px solid #F6F6F6; }
 
 #grid {}
 #grid1 { border: 1px solid #eee; max-height: 300px; overflow-y: scroll; }
 #grid1 td { padding: 10px; }
 #grid2 { border: 1px solid #eee; max-height: 300px; overflow-y: scroll; margin-top: 50px; }
 #grid2 td { padding: 10px; }
+
+.grid tr .delete { display: none; font-weight: bold; font-family: Verdana; color: black; text-decoration: none; font-size: 20px; line-height: 20px; }
+.grid tr .delete:hover { color: red; }
+.grid tr.selected .delete, 
+.grid tr:hover .delete { position: absolute; right: 40px; display: inline; }
